@@ -28,7 +28,7 @@ this.addEventListener('fetch', function(event) {
     });
     return response.clone();
   }).catch(function() {   //当缓存中没有匹配成功，也没有网络时，回退方案
-    return caches.match('./sw_test/star-wars-logo.jpg');
+    return caches.match('./strategy.png');
   }));
 });
 
