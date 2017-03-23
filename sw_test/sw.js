@@ -1,16 +1,12 @@
 this.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open('v1').then(function(cache) {
+  event.waitUntil(   //在安装之前需要执行的操作
+    caches.open('v1').then(function(cache) {  //建立一个键名为V1的缓存，添加缓存资源列表
       return cache.addAll([
-        '/sw-test/',
-        '/sw-test/index.html',
-        '/sw-test/style.css',
-        '/sw-test/app.js',
-        '/sw-test/image-list.js',
-        '/sw-test/star-wars-logo.jpg',
-        '/sw-test/gallery/bountyHunters.jpg',
-        '/sw-test/gallery/myLittleVader.jpg',
-        '/sw-test/gallery/snowTroopers.jpg'
+        './sw-test/',
+        './sw-test/index.html',
+        './sw-test/style.css',
+        './sw-test/app.js',
+        './sw-test/star-wars-logo.jpg'
       ]);
     })
   );
@@ -27,6 +23,6 @@ this.addEventListener('fetch', function(event) {
     });
     return response.clone();
   }).catch(function() {
-    return caches.match('/sw-test/gallery/myLittleVader.jpg');
+    return caches.match('./sw-test/star-wars-logo.jpg');
   }));
 });
