@@ -2,11 +2,11 @@ this.addEventListener('install', function(event) {
   event.waitUntil(   //在安装之前需要执行的操作
     caches.open('v1').then(function(cache) {  //建立一个键名为V1的缓存，添加缓存资源列表
       return cache.addAll([
-        './sw_test/',
-        './sw_test/index.html',
-        './sw_test/style.css',
-        './sw_test/app.js',
-        './sw_test/star-wars-logo.jpg'
+        './',
+        './index.html',
+        './style.css',
+        './app.js',
+        './star-wars-logo.jpg'
       ]);
     })
   );
