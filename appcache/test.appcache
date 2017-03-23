@@ -1,0 +1,11 @@
+
+
+CACHE MANIFEST
+# v1.0.0
+testCache.css
+
+NETWORK:
+testCache.js
+
+FALLBACK:
+/other 404.html
