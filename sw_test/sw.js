@@ -1,6 +1,6 @@
 this.addEventListener('install', function(event) {
   event.waitUntil(   //在安装之前需要执行的操作
-    caches.open('v1').then(function(cache) {  //建立一个键名为V1的缓存，添加缓存资源列表
+    caches.open('v2').then(function(cache) {  //建立一个键名为V1的缓存，添加缓存资源列表
       return cache.addAll([
         './',
         './index.html',
@@ -47,3 +47,6 @@ this.addEventListener('activate', function(event) {
     })
   );
 });
+
+// chrome://inspect/#service-workers 可以展示当前设备上激活和存储的 service worker。
+//  chrome://serviceworker-internals 可以展示更多细节来允许你开始/暂停/调试 worker 的进程
