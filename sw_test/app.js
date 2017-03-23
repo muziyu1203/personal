@@ -53,7 +53,7 @@ window.onload = function() {
 
   // load each set of image, alt text, name and caption
   // for(var i = 0; i<=Gallery.images.length-1; i++) {
-    imgLoad({'url':'star-wars-logo.jpg'}).then(function(arrayResponse) {
+    imgLoad({'url':'strategy.png'}).then(function(arrayResponse) {
 
       var myImage = document.createElement('img');
       var imageURL = window.URL.createObjectURL(arrayResponse[0]);

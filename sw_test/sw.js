@@ -1,14 +1,15 @@
 this.addEventListener('install', function(event) {
   event.waitUntil(   //在安装之前需要执行的操作
     console.log("安装完成之前需要执行的操作");
-    caches.open('v3').then(function(cache) {  //建立一个键名为V1的缓存，添加缓存资源列表
+    caches.open('v4').then(function(cache) {  //建立一个键名为V1的缓存，添加缓存资源列表
       console.log("添加缓存列表 cache.addAll");
       return cache.addAll([
         './',
         './index.html',
         './style.css',
         './app.js',
-        './star-wars-logo.jpg'
+        './vconsole.min.js',
+        './strategy.png'
       ]);
     })
   );
@@ -27,7 +28,7 @@ this.addEventListener('fetch', function(event) {
   }).then(function(r) {
     response = r;
     console.log("缓存匹配成功！");
-    caches.open('v3').then(function(cache) {    //匹配成功，
+    caches.open('v4').then(function(cache) {    //匹配成功，
       cache.put(event.request, response);
     });
     return response.clone();
@@ -39,8 +40,8 @@ this.addEventListener('fetch', function(event) {
 
 //清理旧缓存
 this.addEventListener('activate', function(event) {
-  var cacheWhitelist = ['v3'];   //当前新的缓存   删除除此之外的缓存
-
+  var cacheWhitelist = ['v4'];   //当前新的缓存   删除除此之外的缓存
+console.log("activate");
   event.waitUntil(
     caches.keys().then(function(keyList) {
       return Promise.all(keyList.map(function(key) {
