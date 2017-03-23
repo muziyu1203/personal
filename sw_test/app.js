@@ -2,7 +2,7 @@
  //1、先检测浏览器是否支持service worker。如果支持，则注册一个serviceworker，即一个js文件,其路径是相对于origin
  //2、注册完成后，浏览器会尝试安装 激活service worker
 if ('serviceWorker' in navigator) {  //如果支持，则注册一个serviceworker，即一个js文件,其路径是相对于origin
-  navigator.serviceWorker.register('/personal/sw-test/sw.js', { scope: '/personal/sw-test/' }).then(function(reg) {
+  navigator.serviceWorker.register('/personal/sw_test/sw.js', { scope: '/personal/sw_test/' }).then(function(reg) {
     console.log("注册完成后",reg);
     if(reg.installing) {
       console.log('Service worker installing');
