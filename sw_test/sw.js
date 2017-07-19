@@ -1,6 +1,6 @@
 this.addEventListener('install', function(event) {
   event.waitUntil(   //在安装之前需要执行的操作
-    console.log("安装完成之前需要执行的操作");
+    // console.log("安装完成之前需要执行的操作");
     caches.open('v4').then(function(cache) {  //建立一个键名为V1的缓存，添加缓存资源列表
       console.log("添加缓存列表 cache.addAll");
       return cache.addAll([

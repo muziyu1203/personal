@@ -1,3 +1,7 @@
+
+
+//访问  https://github.com/muziyu1203/personal
+//https://muziyu1203.github.io/personal/sw_test/index.html
 // register service worker
  //1、先检测浏览器是否支持service worker。如果支持，则注册一个serviceworker，即一个js文件,其路径是相对于origin
  //2、注册完成后，浏览器会尝试安装 激活service worker
