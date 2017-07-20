@@ -1,13 +1,12 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'sw-usercalendar';
-var cacheWhitelist = ['sw-usercalendar'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'sw-usercalendar2';
+var cacheWhitelist = ['sw-usercalendar2'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
         // './',
         './index.html',
         './prerender.html',
-        './css/main.css',
         './css/prerender.css',
         './js/index.js',
   ];
