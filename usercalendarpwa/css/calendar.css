@@ -1,0 +1,93 @@
+.calendar-pas {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.calendar-pas:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+
+.calendar-content-pas {
+    width: 100%;
+    overflow: hidden;
+}
+
+.calendar-showmonth-pas {
+    text-align: right;
+    padding: .15rem .3rem .15rem 0;
+    color: #ff8000;
+}
+
+.calendar-month-pas,
+.calendar-week-pas {
+    padding-bottom: .1rem;
+}
+
+.calendar-month-pas {
+    border-top: 1px solid #ededed;
+}
+
+.calendar-pas li {
+    float: left;
+    width: 14.28%;
+    height: .7rem;
+    margin: 0;
+    padding: 0;
+    line-height: .7rem;
+    text-align: center;
+    position: relative;
+}
+
+.calendar-pas li a {
+    position: relative;
+    display: inline-block;
+    width: .6rem;
+    height: .6rem;
+    border-radius: .3rem;
+    line-height: .6rem;
+    color: #111;
+    font-size: .3rem;
+}
+
+.calendar-title-pas li {
+    color: #999;
+    font-size: .26rem;
+}
+
+.calendar-pas .symbol i {
+    position: absolute;
+    bottom: .06rem;
+    right: .27rem;
+    display: inline-block;
+    width: .06rem;
+    height: .06rem;
+    border-radius: .06rem;
+    background-color: #e2233e;
+}
+
+.calendar-pas .activeDay i {
+    background-color: #fff;
+}
+
+.calendar-month-pas .visibleItem {
+    visibility: visible;
+}
+
+.calendar-month-pas .unvisibleItem {
+    visibility: hidden;
+}
+
+.calendar-week-pas .unvisibleItem a {
+    visibility: visible;
+    color: #999;
+}
+
+.calendar-pas .activeDay a {
+    background-color: #ff8000;
+    color: #fff;
+}

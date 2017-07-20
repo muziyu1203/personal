@@ -1,0 +1,124 @@
+
+
+.calendar-zone-pre{
+    background-color:#fff;
+    height:1.6rem;
+}
+
+.calendar-zone-pre li{
+    float: left;
+    width: 14.28%;
+    height: .7rem;
+    margin: 0;
+    padding: 0;
+    line-height: .7rem;
+    text-align: center;
+    position: relative;
+}
+.calendar-zone-pre li a{
+        position: relative;
+    display: inline-block;
+    width: .6rem;
+    height: .6rem;
+    border-radius: .3rem;
+    line-height: .6rem;
+    color: #111;
+    font-size: .3rem;
+    background-color:#eee;
+}
+.l-top-pre{
+    height:.8rem;
+}
+.l-title-pre {
+    color: #666;
+    font-size: .26rem;
+    padding-left: .3rem;
+    padding-top:.2rem;
+    margin-bottom: .3rem;
+}
+.l-ico-pre {
+    display: inline-block;
+    width: .14rem;
+    height: .14rem;
+    border-radius: 100%;
+    background: gray;
+    margin-right: .1rem;
+}
+.l-todo-ul-pre {
+    border-bottom: 1px solid #ddd;
+}
+
+.l-todo-ul-pre li {
+    margin-left: .8rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: .25rem;
+    margin-bottom: .25rem;
+    position: relative;
+    /* overflow: hidden; */
+}
+.eventIcon-pre {
+    position: absolute;
+    top: 0rem;
+    left: -.5rem;
+    width: .4rem;
+    height: .4rem;
+}
+.l-todo-p1-pre{
+    width:2.5rem;
+    height:.4rem;
+    margin-bottom:.1rem;    
+}
+.l-todo-p2-pre{
+    width:4rem;
+    height:.32rem;
+}
+.i-like-div-pre{
+    margin-top:.2rem;
+    height:1rem;
+}
+.guess-left-pre{
+    float:left;
+    margin:.1rem .3rem 0 .2rem;
+    width:.8rem;
+    height:.8rem;
+}
+.guess-right-pre{
+    float:left;
+}
+.like-subtype-pre{
+    width:1rem;
+    height:.3rem;
+    margin-top:.1rem;
+    margin-bottom:.1rem;
+}
+.like-profit-pre{
+    width:1.5rem;
+    height:.4rem;
+}
+
+
+
+.fill-color{
+    background-color:#eee;
+}
+.gray{
+    background-color:#dedcdc;
+}
+.white{
+    background-color:#fff;
+}
+.l-refresh-pre {
+    display: inline-block;
+    width: .9rem;
+    height: .9rem;
+    /*ref:fullreplace background: rgba(0, 0, 0, 0.6) url(https://cdn.m.stock.pingan.com/static/account/usercalendar/images/fresh.png?<%= buildNumber %>) no-repeat center center; */
+    background: rgba(0, 0, 0, 0.6) url(../images/fresh.png) no-repeat center center;
+    /*endref*/
+    -webkit-background-size: .66rem auto;
+    background-size: .66rem auto;
+    position: fixed;
+    right: .3rem;
+    bottom: 5%;
+    border-radius: 100%;
+    z-index: 999;
+}
