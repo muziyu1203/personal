@@ -7,6 +7,7 @@ var cacheList = [
         // './',
         './index.html',
         './prerender.html',
+        './css/main.css',
         './css/prerender.css',
         './js/index.js',
   ];
