@@ -1,8 +1,8 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'sw-usercalendar3';
-var cacheWhitelist = ['sw-usercalendar3'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'sw-usercalendar4';
+var cacheWhitelist = ['sw-usercalendar4'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
          './',
         './index.html',
@@ -41,20 +41,36 @@ self.addEventListener("fetch",function(e){
 });
 
 //更新缓存，清理就缓存
-self.addEventListener("activate",function(e){
-   console.log("清理旧缓存");
-   e.waitUntil(
-        caches.keys().then(function(keyList){
-            return Promise.all(keyList.map(function(key){
-                console.log("缓存列表中的key",key);
-                if(cacheWhitelist.indexOf(key)==-1){
-                    console.log("删除key",key);
-                    return caches.delete(key);
+
+self.addEventListener('activate', evnet => event.waitUntil(
+    Promise.all([
+        // 更新客户端
+        clients.claim(),
+        // 清理旧版本
+        caches.keys().then(cacheList => Promise.all(
+            cacheList.map(cacheName => {
+                //if (cacheName !== CACHE_NAME) {
+                if(cacheWhitelist.indexOf(cacheName)==-1){
+                    caches.delete(cacheName);
                 }
-            }));
-        })
-    )
-});
+            })
+        ))
+    ])
+));
+// self.addEventListener("activate",function(e){
+//    console.log("清理旧缓存");
+//    e.waitUntil(
+//         caches.keys().then(function(keyList){
+//             return Promise.all(keyList.map(function(key){
+//                 console.log("缓存列表中的key",key);
+//                 if(cacheWhitelist.indexOf(key)==-1){
+//                     console.log("删除key",key);
+//                     return caches.delete(key);
+//                 }
+//             }));
+//         })
+//     )
+// });
 
 //错误监控
 self.addEventListener("error",function(e){
