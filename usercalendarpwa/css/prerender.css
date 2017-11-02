@@ -66,7 +66,7 @@
 .l-todo-p1-pre{
     width:2.5rem;
     height:.4rem;
-    margin-bottom:.1rem;    
+    margin-bottom:.1rem;
 }
 .l-todo-p2-pre{
     width:4rem;
@@ -107,13 +107,13 @@
 .white{
     background-color:#fff;
 }
-.l-refresh-pre {
+/* .l-refresh-pre {
     display: inline-block;
     width: .9rem;
     height: .9rem;
-    /*ref:fullreplace background: rgba(0, 0, 0, 0.6) url(https://cdn.m.stock.pingan.com/static/account/usercalendar/images/fresh.png?<%= buildNumber %>) no-repeat center center; */
+
     background: rgba(0, 0, 0, 0.6) url(../images/fresh.png) no-repeat center center;
-    /*endref*/
+
     -webkit-background-size: .66rem auto;
     background-size: .66rem auto;
     position: fixed;
@@ -121,4 +121,4 @@
     bottom: 5%;
     border-radius: 100%;
     z-index: 999;
-}
+} */
