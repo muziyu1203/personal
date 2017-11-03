@@ -6,10 +6,11 @@ var cacheWhitelist = ['pwa-sw20171103-1'];  //清理缓存，保留whitelist中�
 var cacheList = [
          './',
         './index.html',
-        './prerender.html',
+       // './prerender.html',
+        './css/main.css',
         './css/prerender.css',
-        './js/zepto.js',
-        './js/index.js'
+        // './js/zepto.js',
+        // './js/index.js'
   ];
 
 self.addEventListener("install",function(e){
@@ -103,14 +104,16 @@ self.addEventListener('offline', function() {
 //错误监控
 self.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, error) {
     if (error) {
-        reportError(error);
+        console.log(error);
+        // reportError(error);
     } else {
-        reportError({
-            message: errorMessage,
-            script: scriptURI,
-            line: lineNumber,
-            column: columnNumber
-        });
+        console.log(errorMessage, scriptURI, lineNumber, columnNumber, error)
+        // reportError({
+        //     message: errorMessage,
+        //     script: scriptURI,
+        //     line: lineNumber,
+        //     column: columnNumber
+        // });
     }
 }
 
@@ -118,7 +121,7 @@ self.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, error
 
 self.addEventListener('unhandledrejection', function(event) {
     console.log("unhandledrejection",event);
-    reportError({
-        message: event.reason
-    })
+    // reportError({
+    //     message: event.reason
+    // })
 });

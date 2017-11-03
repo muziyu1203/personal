@@ -38,7 +38,7 @@ var common = {
 
     var APP = {
         initialize: function(){
-            common.fLoadPage("#pre-render-zone","prerender.html");
+            // common.fLoadPage("#pre-render-zone","prerender.html");
             // common.fLoadModule("#wrap","todoList");
             this.fInstallServiceWorker();
         },
