@@ -108,7 +108,7 @@ self.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, error
         reportError({
             message: errorMessage,
             script: scriptURI,
-            line: lineNumber，
+            line: lineNumber,
             column: columnNumber
         });
     }
