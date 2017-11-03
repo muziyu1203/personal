@@ -47,7 +47,7 @@ var common = {
                 console.log("支持service worker");
 
                 const version = '1.0.1';
-                navigator.serviceWorker.register('/account/pwa/sw.js',{scope:"/account/pwa/"}).then(function(reg){
+                navigator.serviceWorker.register('/personal/pwa/sw.js',{scope:"/personal/pwa/"}).then(function(reg){
                     console.log("注册完成后",reg,reg.scope);
                     //手动更新
                     if (localStorage.getItem('sw_version') !== version) {
