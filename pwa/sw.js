@@ -34,9 +34,9 @@ self.addEventListener('activate', event => event.waitUntil(
         clients.claim(),
         // 清理旧版本
         caches.keys().then(cacheList => Promise.all(
-            cacheList.map(cacheName => {
+            cacheList.map(cacheName => {  console.log("缓存键名",cacheName,cacheWhitelist);
                 //if (cacheName !== CACHE_NAME) {
-                if(cacheWhitelist.indexOf(cacheName)==-1){
+                if(cacheWhitelist.indexOf(cacheName)==-1){  console.log("删除老的缓存",cacheName);
                     caches.delete(cacheName);
                 }
             })
