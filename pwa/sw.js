@@ -39,7 +39,9 @@ self.addEventListener('activate', evnet => event.waitUntil(
                     caches.delete(cacheName);
                 }
             })
-        ))
+        )).catch(function(err){
+            console.log("err",err);
+        })
     ])
 ));
 //更新缓存，清理旧缓存
@@ -70,7 +72,8 @@ self.addEventListener("fetch",function(e){
             if(response!=null){
                 return response;
             }
-            return fetch(e.request);
+            return fetch(e.request);   //   fetch(fetchRequest, { credentials: 'include' } ); //fetch请求默认不带cookie，可通过此参数将cookie带过去
+
         }).catch(function(){
             return fetch(e.request);
         })
@@ -78,11 +81,44 @@ self.addEventListener("fetch",function(e){
 });
 
 
+//监听离线状态
+self.addEventListener('offline', function() {
+    Notification.requestPermission().then(grant => {
+        if (grant !== 'granted') {
+            return;
+        }
+
+        const notification = new Notification("Hi，网络不给力哟", {
+            body: '您的网络貌似离线了，不过在志文工作室里访问过的页面还可以继续打开~',
+            icon: '//lzw.me/images/avatar/lzwme-80x80.png'
+        });
+
+        notification.onclick = function() {
+            notification.close();
+        };
+    });
+});
+
 
 //错误监控
-self.addEventListener("error",function(e){
-    console.log("error触发",e);
-});
-self.addEventListener("unhandledrejection",function(e){
-    console.log("unhandledrejection触发",e);
+self.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, error) {
+    if (error) {
+        reportError(error);
+    } else {
+        reportError({
+            message: errorMessage,
+            script: scriptURI,
+            line: lineNumber，
+            column: columnNumber
+        });
+    }
+}
+
+//当 Promise 类型的回调发生 reject 却没有 catch 处理，会触发 unhandledrejection 事件。
+
+self.addEventListener('unhandledrejection', function(event) {
+    console.log("unhandledrejection",event);
+    reportError({
+        message: event.reason
+    })
 });
