@@ -8,7 +8,7 @@ var cacheList = [
         './index.html',
         './prerender.html',
         './css/prerender.css',
-        '/js/zepto.js',
+        './js/zepto.js',
         './js/index.js'
   ];
 
