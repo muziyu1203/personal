@@ -27,7 +27,7 @@ self.addEventListener("install",function(e){
     event.waitUntil(self.skipWaiting());
 });*/
 
-self.addEventListener('activate', evnet => event.waitUntil(
+self.addEventListener('activate', event => event.waitUntil(
     Promise.all([
         // 更新客户端
         clients.claim(),
@@ -74,7 +74,7 @@ self.addEventListener("fetch",function(e){
             }
             return fetch(e.request);   //   fetch(fetchRequest, { credentials: 'include' } ); //fetch请求默认不带cookie，可通过此参数将cookie带过去
 
-        }).catch(function(){
+        }).catch(function(e){
             return fetch(e.request);
         })
     );
