@@ -1,8 +1,8 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'pwa-sw20171107-1531';
-var cacheWhitelist = ['pwa-sw20171107-1531'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'pwa-sw20171107-1631';
+var cacheWhitelist = ['pwa-sw20171107-1631'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
         './index.html',
         './css/main.css',
@@ -13,8 +13,8 @@ self.addEventListener("install",function(e){
     console.log("sw install 事件触发",e);
     e.waitUntil( //安装成功后 ServiceWorker 状态会从 installing 变为 installed
         caches.open(cacheStorageKey)
-        .then(cache => cache.addAll(cacheList))   //cacheList中的文件全部安装完成才能
-        .then(() => self.skipWaiting())  //self.skipWaiting() 页面更新的过程当中, 新的 Service Worker 脚本能立即激活和生效
+        .then(cache => cache.addAll(cacheList))   //cacheList中的文件全部安装完成  加载这些资源并将响应添加至缓存。cache.addAll() 是原子操作，如果某个文件缓存失败了，那么整个缓存就会失败！
+        .then(() => self.skipWaiting())  //self.skipWaiting() 页面更新的过程当中, 新的 Service Worker 脚本能立即激活和生效              跳过等待状态
     )
 });
 
