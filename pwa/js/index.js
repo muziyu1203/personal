@@ -47,13 +47,14 @@ var common = {
             if(navigator.serviceWorker){
                 console.log("支持service worker");
 
-                const version = '1.0.3';
+                // const version = '1.0.4';
                 navigator.serviceWorker.register('/personal/pwa/sw.js',{scope:"/personal/pwa/"}).then(function(reg){
                     console.log("注册完成后",reg,reg.scope);
                     //手动更新
-                    if (localStorage.getItem('sw_version') !== version) {
-                        reg.update().then(() => localStorage.setItem('sw_version', version));
-                    }
+                    // if (localStorage.getItem('sw_version') !== version) {
+                    //     console.log("版本不是最新",version);
+                    //     reg.update().then(() => localStorage.setItem('sw_version', version));
+                    // }
 
                    if(reg.installing) {
                       console.log('Service worker installing。。。');
