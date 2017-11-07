@@ -41,9 +41,10 @@ var common = {
             // common.fLoadPage("#pre-render-zone","prerender.html");
             // common.fLoadModule("#wrap","todoList");
             this.fInstallServiceWorker();
-            $("#wrap").html("start rendering。。。。");
-            $("#wrap").show();
-            $("#pre-render-zone").hide();
+            console.log("index.js中initialize，移除效果图");
+            // $("#wrap").html("start rendering。。。。");
+            // $("#wrap").show();
+            // $("#pre-render-zone").hide();
         },
         fInstallServiceWorker: function(){
             if(navigator.serviceWorker){
