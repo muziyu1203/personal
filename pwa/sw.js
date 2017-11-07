@@ -1,15 +1,12 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'pwa-sw20171103-4';
-var cacheWhitelist = ['pwa-sw20171103-4'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'pwa-sw20171107';
+var cacheWhitelist = ['pwa-sw20171107'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
         './index.html',
-       // './prerender.html',
         './css/main.css',
         './css/prerender.css',
-        // './js/zepto.js',
-        // './js/index.js'
   ];
 
 self.addEventListener("install",function(e){
@@ -65,7 +62,7 @@ self.addEventListener('activate', event => event.waitUntil(
 //监听资源请求  判断是否从缓存中获取
 self.addEventListener("fetch",function(e){
 
-    console.log("资源请求 fetch事件触发",e);
+    console.log("fetch事件触发",e);
     e.respondWith(
         caches.match(e.request)
         .then(function(response){  console.log("请求 使用缓存");
@@ -74,7 +71,7 @@ self.addEventListener("fetch",function(e){
             }
             return fetch(e.request);   //   fetch(fetchRequest, { credentials: 'include' } ); //fetch请求默认不带cookie，可通过此参数将cookie带过去
 
-        }).catch(function(e){
+        }).catch(function(e){ console.log("fetch 网络");
             return fetch(e.request);
         })
     );

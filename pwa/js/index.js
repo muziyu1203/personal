@@ -41,6 +41,7 @@ var common = {
             // common.fLoadPage("#pre-render-zone","prerender.html");
             // common.fLoadModule("#wrap","todoList");
             this.fInstallServiceWorker();
+
         },
         fInstallServiceWorker: function(){
             if(navigator.serviceWorker){
