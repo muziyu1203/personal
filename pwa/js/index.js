@@ -41,12 +41,13 @@ var common = {
             // common.fLoadPage("#pre-render-zone","prerender.html");
             // common.fLoadModule("#wrap","todoList");
             this.fInstallServiceWorker();
-
+            $("#wrap").html("start rendering。。。。");
+            $("#wrap").show();
+            $("#pre-render-zone").hide();
         },
         fInstallServiceWorker: function(){
             if(navigator.serviceWorker){
                 console.log("支持service worker");
-
                 // const version = '1.0.4';
                 navigator.serviceWorker.register('/personal/pwa/sw.js',{scope:"/personal/pwa/"}).then(function(reg){
                     console.log("注册完成后",reg,reg.scope);
