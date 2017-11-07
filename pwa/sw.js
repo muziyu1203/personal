@@ -30,7 +30,7 @@ self.addEventListener("install",function(e){
 self.addEventListener('activate', event => event.waitUntil(
     Promise.all([
         // 更新客户端
-        clients.claim(),
+        self.clients.claim(),
         // 清理旧版本
         caches.keys().then(cacheList => Promise.all(
             cacheList.map(cacheName => {  console.log("缓存键名",cacheName,cacheWhitelist);
@@ -68,7 +68,7 @@ self.addEventListener("fetch",function(e){
     console.log("资源请求 fetch事件触发",e);
     e.respondWith(
         caches.match(e.request)
-        .then(function(response){
+        .then(function(response){  console.log("请求 使用缓存");
             if(response!=null){
                 return response;
             }
@@ -82,7 +82,7 @@ self.addEventListener("fetch",function(e){
 
 
 //监听离线状态
-self.addEventListener('offline', function() {
+/*self.addEventListener('offline', function() {
     Notification.requestPermission().then(grant => {
         if (grant !== 'granted') {
             return;
@@ -98,7 +98,7 @@ self.addEventListener('offline', function() {
         };
     });
 });
-
+*/
 
 //错误监控
 self.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, error) {
@@ -116,7 +116,7 @@ self.onerror = function(errorMessage, scriptURI, lineNumber, columnNumber, error
     }
 }
 
-//当 Promise 类型的回调发生 reject 却没有 catch 处理，会触发 unhandledrejection 事件。
+//当 Promise 类型的回调发生reject 却没有 catch 处理，会触发 unhandledrejection 事件。
 
 self.addEventListener('unhandledrejection', function(event) {
     console.log("unhandledrejection",event);
