@@ -41,7 +41,7 @@ var common = {
             // common.fLoadPage("#pre-render-zone","prerender.html");
             // common.fLoadModule("#wrap","todoList");
             this.fInstallServiceWorker();
-            console.log("index.js中initialize，移除效果图");
+            console.log("index.js中initialize.......");
             // $("#wrap").html("start rendering。。。。");
             // $("#wrap").show();
             // $("#pre-render-zone").hide();
@@ -69,12 +69,6 @@ var common = {
                      if(reg.active) {
                         serviceWorker = reg.active;
                       console.log('Service worker active。。。');
-                    }
-                     if (serviceWorker) {
-
-                        serviceWorker.addEventListener('statechange', function (e) {
-                           console.log('当前状态：' + e.target.state);
-                        });
                     }
                 }).catch(function(){
                     console.log("注册service worker失败");

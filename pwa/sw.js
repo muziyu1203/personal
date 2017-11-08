@@ -1,8 +1,8 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'pwa-sw20171108';
-var cacheWhitelist = ['pwa-sw20171108'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'pwa-sw20171108-15';
+var cacheWhitelist = ['pwa-sw20171108-15'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
         './index.html',
         './css/main.css',
