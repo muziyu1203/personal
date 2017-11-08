@@ -71,7 +71,7 @@ var common = {
                       console.log('Service worker active。。。');
                     }
                      if (serviceWorker) {
-                        $('#swState').text(serviceWorker.state);
+
                         serviceWorker.addEventListener('statechange', function (e) {
                            console.log('当前状态：' + e.target.state);
                         });

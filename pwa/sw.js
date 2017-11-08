@@ -78,10 +78,10 @@ self.addEventListener('activate', event => event.waitUntil(
 });*/
 
 // 捕获请求并返回缓存数据
-self.addEventListener('fetch', function(event) {
-  event.respondWith(caches.match(event.request).catch(function() {
+self.addEventListener('fetch', function(event) {  console.log("fetch事件触发",event);
+  event.respondWith(caches.match(event.request).catch(function() { console.log("缓存匹配失败，走网络请求");
     return fetch(event.request);
-  }).then(function(response) {
+  }).then(function(response) { console.log("缓存匹配成功，使用缓存");
     caches.open(cacheStorageKey).then(function(cache) {
       cache.put(event.request, response);
     });
