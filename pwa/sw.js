@@ -1,14 +1,14 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'pwa-sw20171108-1616';
-var cacheWhitelist = ['pwa-sw20171108-1616'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'pwa-sw20171107-1631';
+var cacheWhitelist = ['pwa-sw20171107-1631'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
         './index.html',
         './css/main.css',
         './css/prerender.css',
   ];
-//cache.add : 执行 fetch + put，自动请求并将数据缓存起来
+
 self.addEventListener("install",function(e){
     console.log("sw install 事件触发",e);
     e.waitUntil( //安装成功后 ServiceWorker 状态会从 installing 变为 installed
@@ -30,7 +30,7 @@ self.addEventListener('activate', event => event.waitUntil(
         self.clients.claim(),
         // 清理旧版本
         caches.keys().then(cacheList => Promise.all(
-            cacheList.map(cacheName => {  console.log("键名",cacheName,cacheWhitelist);
+            cacheList.map(cacheName => {  console.log("缓存键名",cacheName,cacheWhitelist);
                 //if (cacheName !== CACHE_NAME) {
                 if(cacheWhitelist.indexOf(cacheName)==-1){  console.log("删除老的缓存",cacheName);
                     caches.delete(cacheName);
@@ -41,12 +41,27 @@ self.addEventListener('activate', event => event.waitUntil(
         })
     ])
 ));
-
+//更新缓存，清理旧缓存
+/*self.addEventListener("activate",function(e){
+   console.log("清理旧缓存");
+   e.waitUntil(
+        caches.keys().then(function(keyList){
+            return Promise.all(keyList.map(function(key){
+                console.log("缓存列表中的key",key);
+                if(cacheWhitelist.indexOf(key)==-1){
+                    console.log("删除key",key);
+                    return caches.delete(key);
+                }
+            }));
+        })
+    )
+});*/
 
 
 
 //监听资源请求  判断是否从缓存中获取
 self.addEventListener("fetch",function(e){
+
     console.log("fetch事件触发",e);
     e.respondWith(
         caches.match(e.request)
@@ -62,19 +77,7 @@ self.addEventListener("fetch",function(e){
     );
 });
 
-// 捕获请求并返回缓存数据
-/*self.addEventListener('fetch', function(event) {  console.log("fetch事件触发",event);
-  event.respondWith(caches.match(event.request).catch(function() { console.log("缓存匹配失败，走网络请求");
-    return fetch(event.request);
-  }).then(function(response) { console.log("缓存匹配成功，使用缓存");
-    caches.open(cacheStorageKey).then(function(cache) {
-      cache.put(event.request, response);
-    });
-    return response.clone();
-  }).catch(function() {
-    return caches.match('./images/logo.png');
-  }));
-});*/
+
 //监听离线状态
 /*self.addEventListener('offline', function() {
     Notification.requestPermission().then(grant => {
