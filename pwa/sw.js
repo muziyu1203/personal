@@ -1,14 +1,14 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'pwa-sw20171108-15';
-var cacheWhitelist = ['pwa-sw20171108-15'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'pwa-sw20171108-1616';
+var cacheWhitelist = ['pwa-sw20171108-1616'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
         './index.html',
         './css/main.css',
         './css/prerender.css',
   ];
-
+//cache.add : 执行 fetch + put，自动请求并将数据缓存起来
 self.addEventListener("install",function(e){
     console.log("sw install 事件触发",e);
     e.waitUntil( //安装成功后 ServiceWorker 状态会从 installing 变为 installed
@@ -41,21 +41,7 @@ self.addEventListener('activate', event => event.waitUntil(
         })
     ])
 ));
-//更新缓存，清理旧缓存
-/*self.addEventListener("activate",function(e){
-   console.log("清理旧缓存");
-   e.waitUntil(
-        caches.keys().then(function(keyList){
-            return Promise.all(keyList.map(function(key){
-                console.log("缓存列表中的key",key);
-                if(cacheWhitelist.indexOf(key)==-1){
-                    console.log("删除key",key);
-                    return caches.delete(key);
-                }
-            }));
-        })
-    )
-});*/
+
 
 
 
