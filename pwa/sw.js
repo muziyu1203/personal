@@ -60,8 +60,7 @@ self.addEventListener('activate', event => event.waitUntil(
 
 
 //监听资源请求  判断是否从缓存中获取
-/*self.addEventListener("fetch",function(e){
-
+self.addEventListener("fetch",function(e){
     console.log("fetch事件触发",e);
     e.respondWith(
         caches.match(e.request)
@@ -75,10 +74,10 @@ self.addEventListener('activate', event => event.waitUntil(
             return fetch(e.request);
         })
     );
-});*/
+});
 
 // 捕获请求并返回缓存数据
-self.addEventListener('fetch', function(event) {  console.log("fetch事件触发",event);
+/*self.addEventListener('fetch', function(event) {  console.log("fetch事件触发",event);
   event.respondWith(caches.match(event.request).catch(function() { console.log("缓存匹配失败，走网络请求");
     return fetch(event.request);
   }).then(function(response) { console.log("缓存匹配成功，使用缓存");
@@ -89,7 +88,7 @@ self.addEventListener('fetch', function(event) {  console.log("fetch事件触发
   }).catch(function() {
     return caches.match('./images/logo.png');
   }));
-});
+});*/
 //监听离线状态
 /*self.addEventListener('offline', function() {
     Notification.requestPermission().then(grant => {
