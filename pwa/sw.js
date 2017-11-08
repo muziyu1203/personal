@@ -30,7 +30,7 @@ self.addEventListener('activate', event => event.waitUntil(
         self.clients.claim(),
         // 清理旧版本
         caches.keys().then(cacheList => Promise.all(
-            cacheList.map(cacheName => {  console.log("缓存键名",cacheName,cacheWhitelist);
+            cacheList.map(cacheName => {  console.log("键名",cacheName,cacheWhitelist);
                 //if (cacheName !== CACHE_NAME) {
                 if(cacheWhitelist.indexOf(cacheName)==-1){  console.log("删除老的缓存",cacheName);
                     caches.delete(cacheName);
@@ -60,7 +60,7 @@ self.addEventListener('activate', event => event.waitUntil(
 
 
 //监听资源请求  判断是否从缓存中获取
-self.addEventListener("fetch",function(e){
+/*self.addEventListener("fetch",function(e){
 
     console.log("fetch事件触发",e);
     e.respondWith(
@@ -75,9 +75,21 @@ self.addEventListener("fetch",function(e){
             return fetch(e.request);
         })
     );
+});*/
+
+// 捕获请求并返回缓存数据
+self.addEventListener('fetch', function(event) {
+  event.respondWith(caches.match(event.request).catch(function() {
+    return fetch(event.request);
+  }).then(function(response) {
+    caches.open(cacheStorageKey).then(function(cache) {
+      cache.put(event.request, response);
+    });
+    return response.clone();
+  }).catch(function() {
+    return caches.match('./images/logo.png');
+  }));
 });
-
-
 //监听离线状态
 /*self.addEventListener('offline', function() {
     Notification.requestPermission().then(grant => {

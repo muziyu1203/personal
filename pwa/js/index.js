@@ -59,13 +59,22 @@ var common = {
                     // }
 
                    if(reg.installing) {
+                        serviceWorker = reg.installing;
                       console.log('Service worker installing。。。');
                     }
                      if(reg.waiting) {
+                        serviceWorker = reg.waiting;
                       console.log('Service worker installed。。。');
                     }
                      if(reg.active) {
+                        serviceWorker = reg.active;
                       console.log('Service worker active。。。');
+                    }
+                     if (serviceWorker) {
+                        $('#swState').text(serviceWorker.state);
+                        serviceWorker.addEventListener('statechange', function (e) {
+                           console.log('当前状态：' + e.target.state);
+                        });
                     }
                 }).catch(function(){
                     console.log("注册service worker失败");
