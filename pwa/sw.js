@@ -1,8 +1,8 @@
 
 
 //定义缓存的key及缓存列表
-var cacheStorageKey = 'pwa-sw20171212';
-var cacheWhitelist = ['pwa-sw20171212'];  //清理缓存，保留whitelist中的缓存，其他的删除
+var cacheStorageKey = 'pwa-sw20171212-1';
+var cacheWhitelist = ['pwa-sw20171212-1'];  //清理缓存，保留whitelist中的缓存，其他的删除
 var cacheList = [
         './index.html',
         './css/main.css',
@@ -65,14 +65,14 @@ self.addEventListener("fetch",function(e){
     console.log("fetch事件触发",e.request);
     e.respondWith(
         caches.match(e.request)
-        .then(function(response){  console.log(e.request,"使用缓存");
+        .then(function(response){  console.log("使用缓存",e.request);
             if(response!=null){
                 return response;
             }
-            console.log(e.request,"网络请求");
+            console.log("网络请求",e.request);
             return fetch(e.request);   //   fetch(fetchRequest, { credentials: 'include' } ); //fetch请求默认不带cookie，可通过此参数将cookie带过去
 
-        }).catch(function(e){ console.log(e.request,"匹配失败，使用网络请求");
+        }).catch(function(e){ console.log("匹配失败，使用网络请求", e.request);
             return fetch(e.request);
         })
     );
